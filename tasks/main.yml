@@ -5,9 +5,8 @@
     name: weechat
   become: true
   when: ansible_os_family == "Fedora"
-# TODO: add verbose mode
 - name: symlink weechat config files
-  command: stow weechat
+  command: "stow {{ if verbose }} -vv {{ endif }} weechat"
   args:
     chdir: "{{ personal_config_path }}"
   when: use_stow and personal_config_path
