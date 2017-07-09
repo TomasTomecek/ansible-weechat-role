@@ -1,11 +1,5 @@
-# Add your Ansible Container service definitions here.
-# For example:
-  #
-  # web:
-  #   image: ubuntu:trusty
-  #   ports:
-  #     - "80:80"
-  #   command: ['/usr/bin/dumb-init', '/usr/sbin/apache2ctl', '-D', 'FOREGROUND']
-  #   dev_overrides:
-  #     environment:
-  #       - "DEBUG=1"
+weechat:
+  from: fedora:26
+  roles:
+    - tomastomecek.weechat
+  command: ['bash', '-c', 'tmux new-session -d weechat && sleep infinity']
