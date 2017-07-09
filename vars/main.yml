@@ -1,2 +1,3 @@
 ---
-# vars file for weechat
+use_stow: false
+personal_config_path: ''
