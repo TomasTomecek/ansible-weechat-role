@@ -2,9 +2,13 @@
 - name: install weechat
   dnf:
     state: installed
-    name: weechat
+    name: "{{ item }}"
   become: true
-  when: ansible_os_family == "Fedora"
+  # when: ansible_os_family == "Fedora"
+  with_items:
+    - weechat
+    - htop
+    - tmux
 - name: symlink weechat config files
   command: "stow {{ if verbose }} -vv {{ endif }} weechat"
   args:
