@@ -3,7 +3,7 @@
   dnf:
     state: installed
     name: "{{ item }}"
-  become: true
+  become: "{% if ansible_env.ANSIBLE_CONTAINER is defined %} yes {% else %} no {% endif %}"
   # when: ansible_os_family == "Fedora"
   with_items:
     - weechat
