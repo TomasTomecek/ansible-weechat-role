@@ -1,16 +1,6 @@
 ---
 - name: install weechat
-  dnf:
-    state: installed
-    name: "{{ item }}"
-  become: "{% if ansible_env.ANSIBLE_CONTAINER is defined %} yes {% else %} no {% endif %}"
-  # when: ansible_os_family == "Fedora"
-  with_items:
-    - weechat
-    - htop
-    - tmux
-- name: symlink weechat config files
-  command: "stow {{ if verbose }} -vv {{ endif }} weechat"
-  args:
-    chdir: "{{ personal_config_path }}"
-  when: use_stow and personal_config_path
+  package:
+    state: present
+    name: weechat
+  become: yes
