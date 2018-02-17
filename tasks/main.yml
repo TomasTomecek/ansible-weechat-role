@@ -3,4 +3,4 @@
   package:
     state: present
     name: weechat
-  become: yes
+  become: "{% if ansible_user_id != 'root' %}yes{% else %}no{% endif %}"
