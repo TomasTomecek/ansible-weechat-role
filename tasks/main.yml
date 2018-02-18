@@ -4,3 +4,7 @@
     state: present
     name: weechat
   become: "{% if ansible_user_id != 'root' %}yes{% else %}no{% endif %}"
+- name: Create unprivileged user
+  user:
+    name: "{{ username }}"
+  become: "{% if ansible_user_id != 'root' %}yes{% else %}no{% endif %}"
